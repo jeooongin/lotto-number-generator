@@ -11,7 +11,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  int maxNumber = 45;
+  int maxNumber = 44;
   List<int> lottoNumbers = [];
 
   @override
@@ -47,7 +47,7 @@ class _HomeScreenState extends State<HomeScreen> {
     while (lottoSet.length != 7) {
       final number = random.nextInt(maxNumber);
 
-      lottoSet.add(number);
+      lottoSet.add(number + 1);
     }
 
     setState(() {
@@ -90,29 +90,65 @@ class _Body extends StatelessWidget {
     return Expanded(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: lottoNumbers
-            .asMap()
-            .entries
-            .map(
-              (x) => Padding(
-                padding: EdgeInsets.symmetric(
-                  horizontal: 16.0,
-                  vertical: 16.0,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 4.0,
                 ),
-                child: Row(
-                  children: x.value
-                      .toString()
-                      .split('')
-                      .map(
-                        (e) => Text(
-                          "${e}",
-                        ),
-                      )
-                      .toList(),
-                ),
+                child: Text(lottoNumbers[0].toString()),
               ),
-            )
-            .toList(),
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 4.0,
+                ),
+                child: Text(lottoNumbers[1].toString()),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 4.0,
+                ),
+                child: Text(lottoNumbers[2].toString()),
+              ),
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 4.0,
+                ),
+                child: Text(lottoNumbers[3].toString()),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 4.0,
+                ),
+                child: Text(lottoNumbers[4].toString()),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 4.0,
+                ),
+                child: Text(lottoNumbers[5].toString()),
+              ),
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 4.0,
+                ),
+                child: Text(lottoNumbers[6].toString()),
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }
